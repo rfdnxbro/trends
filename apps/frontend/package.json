@@ -10,13 +10,16 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@shared/types": "*",
+    "autoprefixer": "^10.4.21",
     "next": "14.0.0",
+    "postcss": "^8.5.4",
     "react": "^18",
     "react-dom": "^18",
-    "@shared/types": "*"
+    "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.19.0",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
