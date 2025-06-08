@@ -70,3 +70,40 @@ npm run test             # テストの実行 (実装時)
 - APIルートはフロントエンドからバックエンドにプロキシされる
 - 共有型は `@shared/types` を通じて両アプリで利用可能
 - バックエンド開発には `tsx watch` を使用してホットリロード
+
+## 次の実装ステップ
+
+### 優先度: 高
+1. **バックエンド: データ収集サービス実装**
+   - `apps/backend/src/services/trendCollector.ts` - はてなブックマーク、Qiita、ZennのAPI連携
+   - `apps/backend/src/services/companyDetector.ts` - 記事URLから企業ドメイン判定ロジック
+   - `apps/backend/src/cron/dailyCollection.ts` - 定期実行（cron）による自動データ収集
+
+2. **バックエンド: API拡充**
+   - `GET /api/companies` - 企業一覧取得
+   - `GET /api/companies/:id/metrics` - 企業別メトリクス取得
+   - `GET /api/trends/daily` - 日別トレンド分析
+   - `GET /api/dashboard` - ダッシュボード用データ
+
+3. **データベース設計**
+   - Company, DailyMetrics, Trend テーブル設計
+   - 時系列データ効率化のためのインデックス設計
+   - データ保持ポリシー（古いデータの削除戦略）
+
+### 優先度: 中
+4. **フロントエンド: ダッシュボード画面**
+   - `apps/frontend/src/app/dashboard/page.tsx` - 企業影響力ランキング表示
+   - `apps/frontend/src/components/TrendChart.tsx` - 時系列グラフ（Chart.js/Recharts）
+   - `apps/frontend/src/components/CompanyCard.tsx` - 企業カード表示
+   - フィルタリング・ソート機能
+
+5. **フロントエンド: 企業詳細画面**
+   - `apps/frontend/src/app/companies/[id]/page.tsx` - 個別企業の詳細分析
+   - トレンド推移グラフ、記事一覧表示
+
+6. **フロントエンド: データフェッチング**
+   - `apps/frontend/src/lib/api.ts` - 型安全なAPI呼び出し
+   - SWR/TanStack Query でのキャッシュ管理
+
+### 完了済み
+- ✅ 共有型定義の拡充 (PR #2) - Company, DailyMetrics, CompanyInfluence等の型定義
