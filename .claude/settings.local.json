@@ -14,7 +14,9 @@
       "Bash(git checkout:*)",
       "Bash(git commit:*)",
       "Bash(npm install:*)",
-      "Bash(npx tailwindcss init:*)"
+      "Bash(npx tailwindcss init:*)",
+      "Bash(brew install:*)",
+      "Bash(gh auth:*)"
     ],
     "deny": []
   }
