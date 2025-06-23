@@ -1,9 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev:frontend",
-  "installCommand": "npm install",
-  "outputDirectory": "apps/frontend/.next",
   "functions": {
     "apps/backend/api/**/*.ts": {
       "runtime": "@vercel/node"
