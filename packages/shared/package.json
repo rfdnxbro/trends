@@ -4,7 +4,9 @@
   "private": true,
   "main": "index.ts",
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'No lint rules for types package'"
   },
   "devDependencies": {
     "typescript": "^5.0.0"
