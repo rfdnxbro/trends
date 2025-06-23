@@ -10,16 +10,17 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "hono": "^4.0.0",
     "@hono/node-server": "^1.4.0",
-    "@shared/types": "*"
+    "@shared/types": "*",
+    "@vercel/node": "^5.3.0",
+    "hono": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "tsx": "^4.0.0",
-    "typescript": "^5.0.0",
-    "eslint": "^8.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0"
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.57.1",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
   }
 }
