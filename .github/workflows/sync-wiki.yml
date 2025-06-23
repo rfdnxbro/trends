@@ -20,8 +20,8 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Upload to Wiki
-        uses: SwiftDocOrg/github-wiki-publish-action@v1
+      - name: Sync to Wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@v4
         with:
-          path: "docs/wiki"
+          path: docs/wiki/
           token: ${{ secrets.GITHUB_TOKEN }}
