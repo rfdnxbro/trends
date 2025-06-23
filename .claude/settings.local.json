@@ -16,7 +16,8 @@
       "Bash(npm install:*)",
       "Bash(npx tailwindcss init:*)",
       "Bash(brew install:*)",
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "Bash(gh pr create:*)"
     ],
     "deny": []
   }
