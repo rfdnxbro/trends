@@ -1,5 +1,7 @@
 {
   "version": 2,
+  "buildCommand": "npm run build --workspace=@trends/frontend",
+  "installCommand": "npm install",
   "functions": {
     "apps/backend/api/**/*.ts": {
       "runtime": "@vercel/node"
