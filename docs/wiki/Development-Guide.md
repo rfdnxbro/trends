@@ -13,9 +13,17 @@ trends/
 ├── apps/
 │   ├── frontend/          # Next.js アプリケーション (ポート 3000)
 │   └── backend/           # Hono API サーバー (ポート 3001)
+│       └── api/           # Vercel Functions (/api/*)
 └── packages/
     └── shared/            # 共有TypeScript型とユーティリティ
 ```
+
+### デプロイ構成
+- **開発環境**: フロントエンド(3000)→バックエンド(3001)のプロキシ構成
+- **本番環境**: Vercel統合デプロイ（フロントエンド・バックエンド同一プロジェクト）
+  - フロントエンド: `apps/frontend/` → Next.js アプリ
+  - バックエンド: `apps/backend/api/` → Vercel Functions (`/api/*`)
+- **monorepo設計思想**: 共有型定義(`@shared/types`)の一元管理を維持
 
 ### 技術スタック詳細
 
@@ -28,7 +36,8 @@ trends/
 
 #### バックエンド
 - **Hono** - 軽量でモダンなWebフレームワーク
-- **Node.js adapter** - Node.js環境での実行
+- **Node.js adapter** - 開発環境での実行
+- **Vercel Functions** - 本番環境でのServerless API
 - **TypeScript** - 型安全なAPI開発
 
 #### 共有パッケージ
