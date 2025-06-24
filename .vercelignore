@@ -38,6 +38,7 @@ docs/
 README.md
 CLAUDE.md
 
-# Force apps/frontend as root
-apps/backend/
-packages/
+# Exclude from build (but keep for functions)
+packages/shared/dist/
+apps/backend/src/
+apps/backend/node_modules/
