@@ -37,3 +37,7 @@ coverage
 docs/
 README.md
 CLAUDE.md
+
+# Force apps/frontend as root
+apps/backend/
+packages/
