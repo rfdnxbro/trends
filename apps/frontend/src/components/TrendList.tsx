@@ -3,7 +3,20 @@
 import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
-import { TrendsResponse } from '@shared/types'
+
+// Vercel対応のため一時的に型定義をローカル配置
+interface Trend {
+  id: number
+  title: string
+  popularity: number
+  source?: string
+  tags?: string[]
+  url?: string
+}
+
+interface TrendsResponse {
+  trends: Trend[]
+}
 
 export default function TrendList() {
   const [trends, setTrends] = useState<TrendsResponse['trends']>([])
