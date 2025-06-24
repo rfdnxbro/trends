@@ -23,11 +23,23 @@
 ## プロジェクト構成
 
 これは npm workspaces を使用したTypeScript monorepoで、以下の構造になっています：
-- `apps/frontend` - Next.js アプリケーション (ポート 3000)
-- `apps/backend` - Hono API サーバー (ポート 3001)
-- `packages/shared` - 共有TypeScript型とユーティリティ
 
-フロントエンドは Next.js rewrites 設定を通じてバックエンドへのAPIリクエストをプロキシします。
+```
+trends/
+├── apps/
+│   ├── frontend/          # Next.js アプリケーション (ポート 3000)
+│   └── backend/           # Hono API サーバー (ポート 3001)
+│       └── api/           # Vercel Functions (/api/*)
+└── packages/
+    └── shared/            # 共有TypeScript型とユーティリティ
+```
+
+### デプロイ構成
+- **開発環境**: フロントエンド(3000)→バックエンド(3001)のプロキシ構成
+- **本番環境**: Vercel統合デプロイ（フロントエンド・バックエンド同一プロジェクト）
+  - フロントエンド: `apps/frontend/` → Next.js アプリ
+  - バックエンド: `apps/backend/api/` → Vercel Functions (`/api/*`)
+- **monorepo設計思想**: 共有型定義(`@shared/types`)の一元管理を維持
 
 ## 開発コマンド
 
@@ -55,7 +67,8 @@ npm run test             # テストの実行 (実装時)
 ## 技術スタック
 
 - **フロントエンド**: Next.js 14 with App Router, React 18, TypeScript, shadcn/ui, Tailwind CSS
-- **バックエンド**: Hono with Node.js adapter, TypeScript
+- **バックエンド**: Hono with Node.js adapter, TypeScript, Vercel Functions
+- **デプロイ**: Vercel (フロントエンド・バックエンド統合デプロイ)
 - **共有**: 共通TypeScript型とインターフェース
 - **ビルドツール**: TypeScript, ESLint, tsx for development
 
@@ -66,10 +79,17 @@ npm run test             # テストの実行 (実装時)
 
 ## 開発メモ
 
+### 開発環境
 - フロントエンドはポート3000、バックエンドはポート3001で動作
 - APIルートはフロントエンドからバックエンドにプロキシされる
 - 共有型は `@shared/types` を通じて両アプリで利用可能
 - バックエンド開発には `tsx watch` を使用してホットリロード
+
+### 本番環境 (Vercel)
+- フロントエンド・バックエンド統合デプロイ（同一プロジェクト）
+- Root Directory: `./` でmonorepo全体をデプロイ
+- API: `apps/backend/api/` → Vercel Functions (`/api/*`)
+- 詳細: [VERCEL_SETUP.md](./VERCEL_SETUP.md) を参照
 
 ## 運用ルール
 
@@ -125,3 +145,4 @@ npm run test             # テストの実行 (実装時)
 
 ### 完了済み
 - ✅ 共有型定義の拡充 (PR #2) - Company, DailyMetrics, CompanyInfluence等の型定義
+- ✅ Vercel本番環境デプロイ設定 (PR #10-24) - monorepo統合デプロイ構成

@@ -21,9 +21,10 @@ Development Command: npm run dev:frontend
 
 **重要**: 
 - Root Directory: `./`（プロジェクトルート）
-- monorepo workspace構造をそのまま活用
-- フロントエンド・バックエンド統合デプロイ
-- 設定がシンプルで直感的
+- フロントエンド・バックエンド分離型統合デプロイ
+- フロントエンド: `apps/frontend/` → Next.js アプリ
+- バックエンド: `apps/backend/api/` → Vercel Functions (`/api/*`)
+- monorepo設計思想を維持した同一プロジェクトデプロイ
 
 ### ESLint設定について
 `next.config.js`でESLintビルドチェックを無効化済み：

@@ -4,7 +4,7 @@
   "outputDirectory": "apps/frontend/.next",
   "installCommand": "npm install",
   "functions": {
-    "apps/backend/api/**/*.ts": {
+    "apps/backend/api/[...route].ts": {
       "runtime": "@vercel/node@3.0.0"
     }
   }
