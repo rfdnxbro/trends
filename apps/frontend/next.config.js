@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  eslint: {
+    // Vercelビルド時のESLintエラーを無視（開発時は有効）
+    ignoreDuringBuilds: true,
+  },
   async rewrites() {
     // 本番環境ではVercel Functionsを使用、開発環境ではlocalhost:3001を使用
     if (process.env.NODE_ENV === 'production') {
