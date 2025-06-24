@@ -24,7 +24,8 @@
       "Bash(npm run build:*)",
       "WebFetch(domain:tailwindcss.com)",
       "Bash(rm:*)",
-      "Bash(npm run lint)"
+      "Bash(npm run lint)",
+      "Bash(git branch:*)"
     ],
     "deny": []
   }
