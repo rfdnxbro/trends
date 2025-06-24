@@ -8,18 +8,7 @@
 3. GitHubリポジトリ `rfdnxbro/trends` を選択
 4. 以下の設定を入力：
 
-#### Option A: monorepo ルートデプロイ (推奨)
-```
-Project Name: trends
-Framework Preset: Next.js
-Root Directory: ./
-Build Command: cd apps/frontend && npm run build
-Output Directory: apps/frontend/.next
-Install Command: npm install && cd apps/frontend && npm install
-Development Command: npm run dev:frontend
-```
-
-#### Option B: フロントエンドディレクトリデプロイ（推奨）
+### 推奨設定: monorepo統合デプロイ
 ```
 Project Name: trends
 Framework Preset: Next.js
@@ -29,6 +18,11 @@ Output Directory: .next
 Install Command: npm install
 Development Command: npm run dev
 ```
+
+**重要**: 
+- Root Directory: `apps/frontend`（フロントエンドディレクトリ）
+- Backend Functions: `vercel.json`で自動設定
+- monorepo workspaceの依存関係は自動解決
 
 ### ESLint設定について
 `next.config.js`でESLintビルドチェックを無効化済み：
