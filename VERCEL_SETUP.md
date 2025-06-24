@@ -8,15 +8,37 @@
 3. GitHubリポジトリ `rfdnxbro/trends` を選択
 4. 以下の設定を入力：
 
+#### Option A: monorepo ルートデプロイ (推奨)
 ```
 Project Name: trends
 Framework Preset: Next.js
 Root Directory: ./
-Build Command: npm run build
+Build Command: cd apps/frontend && npm run build
 Output Directory: apps/frontend/.next
-Install Command: npm install
+Install Command: npm install && cd apps/frontend && npm install
 Development Command: npm run dev:frontend
 ```
+
+#### Option B: フロントエンドディレクトリデプロイ（推奨）
+```
+Project Name: trends
+Framework Preset: Next.js
+Root Directory: apps/frontend
+Build Command: npm run build
+Output Directory: .next
+Install Command: npm install
+Development Command: npm run dev
+```
+
+### ESLint設定について
+`next.config.js`でESLintビルドチェックを無効化済み：
+```javascript
+eslint: {
+  ignoreDuringBuilds: true, // Vercelビルド時のみ無効化
+}
+```
+- **開発時**: ESLintは有効（`npm run lint`で実行可能）
+- **ビルド時**: ESLintエラーでビルド失敗を防ぐ
 
 ### 環境変数の設定
 Vercel Dashboard > Project Settings > Environment Variables で以下を設定：
