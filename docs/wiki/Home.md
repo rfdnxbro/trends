@@ -26,9 +26,22 @@
 
 TypeScript monorepo構成で、以下の3つの主要コンポーネントから構成されています：
 
-- **Frontend**: Next.js アプリケーション（企業影響力の可視化）
-- **Backend**: Hono API サーバー（データ収集・API提供）
-- **Shared**: 共有TypeScript型とユーティリティ
+```
+trends/
+├── apps/
+│   ├── frontend/          # Next.js アプリケーション（企業影響力の可視化）
+│   └── backend/           # Hono API サーバー（データ収集・API提供）
+│       └── api/           # Vercel Functions (/api/*)
+└── packages/
+    └── shared/            # 共有TypeScript型とユーティリティ
+```
+
+### デプロイ構成
+- **開発環境**: フロントエンド(3000)→バックエンド(3001)のプロキシ構成
+- **本番環境**: Vercel統合デプロイ（フロントエンド・バックエンド同一プロジェクト）
+  - フロントエンド: `apps/frontend/` → Next.js アプリ
+  - バックエンド: `apps/backend/api/` → Vercel Functions (`/api/*`)
+- **monorepo設計思想**: 共有型定義(`@shared/types`)の一元管理を維持
 
 ## 📚 Wiki ナビゲーション
 
@@ -41,7 +54,8 @@ TypeScript monorepo構成で、以下の3つの主要コンポーネントから
 ## 🛠️ 技術スタック
 
 - **Frontend**: Next.js 14, React 18, TypeScript, shadcn/ui, Tailwind CSS
-- **Backend**: Hono, Node.js, TypeScript
+- **Backend**: Hono, Node.js, TypeScript, Vercel Functions
+- **Deploy**: Vercel (フロントエンド・バックエンド統合デプロイ)
 - **Build**: npm workspaces, ESLint, tsx for development
 
 ---
