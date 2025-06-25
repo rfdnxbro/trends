@@ -12,7 +12,6 @@ app.use('*', cors({
   origin: [
     process.env.CORS_ORIGIN || 'http://localhost:3000',
     'https://*.vercel.app',
-    /^https:\/\/.*\.vercel\.app$/,
   ],
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
